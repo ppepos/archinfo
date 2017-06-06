@@ -44,7 +44,7 @@ class ArchPEP8(Arch):
     call_pushes_ret = True
     stack_change = -2
     branch_delay_slot = True
-    sizeof = {'short': 16, 'int': 32, 'long': 32, 'long long': 64}
+    sizeof = {'short': 8, 'int': 16, 'long': 32, 'long long': 64}
     cs_arch = _capstone.CS_ARCH_MIPS
     cs_mode = _capstone.CS_MODE_32 + _capstone.CS_MODE_LITTLE_ENDIAN
     uc_arch = _unicorn.UC_ARCH_MIPS if _unicorn else None
@@ -83,11 +83,11 @@ class ArchPEP8(Arch):
        'pc': 22,
        'pc_at_syscall': 24,
        'n': 26,
-       'z': 27,
-       'v': 28,
-       'c': 29,
-       'pad_0':  30,
-       'pad_1':  31
+       'z': 28,
+       'v': 30,
+       'c': 32,
+       # 'pad_0':  30,
+       # 'pad_1':  31
     }
 
     registers = {
@@ -100,12 +100,12 @@ class ArchPEP8(Arch):
        'sp': (20, 2),
        'pc': (22, 2),
        'pc_at_syscall': (24, 2),
-       'n': (26, 1),
-       'z': (27, 1),
-       'v': (28, 1),
-       'c': (29, 1),
-       'pad_0':  (30, 1),
-       'pad_1':  (31, 1)
+       'n': (26, 2),
+       'z': (28, 2),
+       'v': (30, 2),
+       'c': (32, 2),
+       # 'pad_0':  (30, 1),
+       # 'pad_1':  (31, 1)
     }
 
     # argument_registers = {
